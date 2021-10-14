@@ -1,0 +1,10 @@
+mybatis-plus:
+  type-aliases-package: com.bank.pojo
+  configuration:
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+  mapper-locations: classpath*:com/bank/mapper/xml/*Mapper.xml
+  global-config:
+    db-config:
+      logic-delete-value: 1 # 逻辑已删除值(默认为 1)
+      logic-not-delete-value: 0 # 逻辑未删除值(默认为 0)
+      id-type: assign_id #全局唯一ID

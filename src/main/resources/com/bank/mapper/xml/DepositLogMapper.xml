@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.bank.mapper.DepositLogMapper">
+
+    <select id="selectPage" resultType="DepositLog">
+        select a.*,concat(concat(c.name,'-'),c.employee_id) as 'uploadUserName',b.realname,b.phone
+        from deposit_log a
+        join customer b
+        on a.customer_id = b.id
+        join user c
+        on a.upload_user_id = c.id
+        ${ew.customSqlSegment}
+    </select>
+</mapper>

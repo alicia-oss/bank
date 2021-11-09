@@ -25,4 +25,8 @@ public interface UserMapper extends BaseMapper<User> {
 
   //按id查询
   User selectId(String id);
+
+
+
+  User getByAccount(String account);
 }

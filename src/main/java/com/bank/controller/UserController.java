@@ -69,17 +69,18 @@ public class UserController {
   public Result<?> add(@RequestBody User user, HttpSession session) {
     if(addCheck(user))
     {
-      User upload = (User) session.getAttribute("UserInfo");
+      User upload = (User) session.getAttribute("userInfo");
       Date date = new Date(System.currentTimeMillis());
       user.setUploadUserId(upload.getId());
       user.setCreateTime(date);
       user.setUpdateTime(date);
       //密码加密
-      String  salt = new SecureRandomNumberGenerator().toString();
-      System.out.println("盐==="+salt);
-//      设置hash算法迭代次数,加密
-      String password =new SimpleHash("md5",user.getEmployeeId(),salt,CommonConstant.HASH_TIME).toString();
-      user.setPassword(password);
+//      String  salt = new SecureRandomNumberGenerator().toString();
+//      System.out.println("盐==="+salt);
+//      //设置hash算法迭代次数,加密
+//      SimpleHash md5 = new SimpleHash("md5", user.getAccount(), salt, CommonConstant.HASH_TIME);
+//      String password = md5.toString();
+      user.setPassword(user.getAccount());
       userService.save(user);
       return Result.OK("添加成功！");
     }

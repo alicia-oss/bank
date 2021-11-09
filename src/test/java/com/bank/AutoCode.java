@@ -58,7 +58,7 @@ public class AutoCode {
     //4.策略配置
     // 策略配置
     StrategyConfig strategy = new StrategyConfig();
-    strategy.setInclude("deposit_log");
+    strategy.setInclude("role");
     strategy.setNaming(NamingStrategy.underline_to_camel);
     strategy.setColumnNaming(NamingStrategy.underline_to_camel);
     //strategy.setSuperEntityClass("你自己的父类实体,没有就不用设置!");

@@ -72,5 +72,8 @@ public class User implements Serializable {
     @TableLogic
     private Integer deleted;
 
+    @TableField(exist = false)
+    private String permission;
+
 
 }

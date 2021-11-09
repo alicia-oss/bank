@@ -2,6 +2,7 @@ package com.bank.service;
 
 import com.bank.pojo.Customer;
 import com.bank.pojo.User;
+import com.baomidou.mybatisplus.core.conditions.Wrapper;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
@@ -19,5 +20,6 @@ public interface UserService extends IService<User> {
 
  User selectId(String id);
 
-
+ User getByAccount(String  account);
+ User getOneUser(Wrapper<User> queryWrapper);
 }

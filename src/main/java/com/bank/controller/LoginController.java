@@ -32,7 +32,7 @@ public class LoginController {
 //    2.校验用户名
     LambdaQueryWrapper<User> lambdaQueryWrapper = new LambdaQueryWrapper<>();
     lambdaQueryWrapper.eq(User::getAccount,account);
-    User user = userService.getOne(lambdaQueryWrapper);
+    User user = userService.getOneUser(lambdaQueryWrapper);
     System.out.println(user);
     if(user == null ){
       return Result.error("登陆失败，该用户不存在!");

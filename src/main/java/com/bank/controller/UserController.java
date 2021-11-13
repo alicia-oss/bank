@@ -8,8 +8,6 @@ import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import io.swagger.annotations.ApiOperation;
 import lombok.val;
-import org.apache.shiro.crypto.SecureRandomNumberGenerator;
-import org.apache.shiro.crypto.hash.SimpleHash;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -40,7 +38,6 @@ public class UserController {
   private UserService userService;
 
   /**
-   *
    * @param user
    * @param pageNo
    * @param pageSize
@@ -74,12 +71,6 @@ public class UserController {
       user.setUploadUserId(upload.getId());
       user.setCreateTime(date);
       user.setUpdateTime(date);
-      //密码加密
-//      String  salt = new SecureRandomNumberGenerator().toString();
-//      System.out.println("盐==="+salt);
-//      //设置hash算法迭代次数,加密
-//      SimpleHash md5 = new SimpleHash("md5", user.getAccount(), salt, CommonConstant.HASH_TIME);
-//      String password = md5.toString();
       user.setPassword(user.getAccount());
       userService.save(user);
       return Result.OK("添加成功！");

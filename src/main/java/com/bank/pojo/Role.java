@@ -11,7 +11,7 @@ import lombok.experimental.Accessors;
 
 /**
  * <p>
- * 
+ *
  * </p>
  *
  * @author 使命必达
@@ -29,7 +29,9 @@ public class Role implements Serializable {
       @TableId(value = "id", type = IdType.AUTO)
     private String id;
 
-    private String permission;
+    private String code;
+
+    private String name;
 
 
 }

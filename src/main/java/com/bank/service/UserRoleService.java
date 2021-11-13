@@ -3,6 +3,8 @@ package com.bank.service;
 import com.bank.pojo.UserRole;
 import com.baomidou.mybatisplus.extension.service.IService;
 
+import java.util.List;
+
 /**
  * <p>
  *  服务类
@@ -12,5 +14,7 @@ import com.baomidou.mybatisplus.extension.service.IService;
  * @since 2021-11-09
  */
 public interface UserRoleService extends IService<UserRole> {
+
+  List<String> getRoleListById(String id);
 
 }

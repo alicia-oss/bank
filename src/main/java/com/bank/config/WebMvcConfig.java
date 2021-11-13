@@ -17,20 +17,20 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurationSupp
     // 使用增强后的类替换了beanFactory原有的 beanClass，增强类会对其中带有@Bean注解的方法进行额外处理，
     // 确保调用带@Bean注解的方法返回的都是同一个实例。
 
-  @Override
-  protected void addInterceptors(InterceptorRegistry registry) {
-    InterceptorRegistration registration = registry.addInterceptor(new LoginInterceptor());
-    registration.addPathPatterns("/**").excludePathPatterns("/bank/login/**");
-  }
+//  @Override
+//  protected void addInterceptors(InterceptorRegistry registry) {
+//    InterceptorRegistration registration = registry.addInterceptor(new LoginInterceptor());
+//    registration.addPathPatterns("/**").excludePathPatterns("/bank/login/**");
+//  }
 
     //跨域访问
-    @Override
-    protected void addCorsMappings(CorsRegistry registry) {
-      registry.addMapping("/**")
-              .allowCredentials(true)
-              .allowedHeaders("*")
-              .allowedOrigins("*")
-              .allowedMethods("*");
-    }
+//    @Override
+//    protected void addCorsMappings(CorsRegistry registry) {
+//      registry.addMapping("/**")
+//              .allowCredentials(true)
+//              .allowedHeaders("*")
+//              .allowedOrigins("*")
+//              .allowedMethods("*");
+//    }
   }
 

@@ -4,6 +4,7 @@ import com.bank.pojo.Role;
 import com.bank.pojo.User;
 import com.bank.mapper.UserMapper;
 import com.bank.service.RoleService;
+import com.bank.service.UserRoleService;
 import com.bank.service.UserService;
 import com.baomidou.mybatisplus.core.conditions.Wrapper;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
@@ -32,6 +33,9 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, User> implements Us
   @Autowired
   private RoleService roleService;
 
+  @Autowired
+  private UserRoleService userRoleService;
+
   @Override
   public User selectId(String id) {
     return userMapper.selectId(id);
@@ -41,8 +45,8 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, User> implements Us
   public User getOneUser(Wrapper<User> queryWrapper) {
     User user = getOne(queryWrapper);
     if(user != null){
-      Role role = roleService.getById(user.getRole()) ;
-      user.setPermission(role.getPermission());
+//      Role role = roleService.getById(user.getRole()) ;
+//      user.setPermission(role.getPermission());
       return user;
     }
     return  null;
@@ -52,6 +56,8 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, User> implements Us
   public User getByAccount(String account) {
     QueryWrapper<User> queryWrapper = new QueryWrapper<>();
     queryWrapper.eq("account", account);
-    return getOne(queryWrapper);
+    User user =  getOne(queryWrapper);
+    user.setRoles(userRoleService.getRoleListById(user.getId()));
+    return user;
   }
 }

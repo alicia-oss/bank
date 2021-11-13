@@ -18,33 +18,44 @@ public class LoginController {
 
   @Autowired
   UserService userService;
+//
+//  @PostMapping("/login")
+//  public Result<?> login(@RequestBody LoginModel loginModel,
+//                         HttpSession session){
+//    String account = loginModel.getAccount();
+//    String  password = loginModel.getPassword();
+//    System.out.println(account + password);
+//    String captcha = loginModel.getCaptcha();
+//
+////    1.校验验证码
+//
+////    2.校验用户名
+//    LambdaQueryWrapper<User> lambdaQueryWrapper = new LambdaQueryWrapper<>();
+//    lambdaQueryWrapper.eq(User::getAccount,account);
+//    User user = userService.getOneUser(lambdaQueryWrapper);
+//    System.out.println(user);
+//    if(user == null ){
+//      return Result.error("登陆失败，该用户不存在!");
+//    }
+//    else if(!user.getPassword().equals(password)){
+//      return Result.error("登录失败，密码错误!");
+//    }
+//    else {
+//      //3.在rides中删除验证，在session中添加标记
+//      session.setAttribute("userInfo", user);
+//      return Result.OK("登录成功！");
+//    }
+//  }
+//
 
-  @PostMapping("/login")
-  public Result<?> login(@RequestBody LoginModel loginModel,
-                         HttpSession session){
-    String account = loginModel.getAccount();
-    String  password = loginModel.getPassword();
-    System.out.println(account + password);
-    String captcha = loginModel.getCaptcha();
+  @PostMapping("/success")
+  public Result<?> loginSuccess( ){
+    return Result.OK("登录成功！");
+  }
 
-//    1.校验验证码
-
-//    2.校验用户名
-    LambdaQueryWrapper<User> lambdaQueryWrapper = new LambdaQueryWrapper<>();
-    lambdaQueryWrapper.eq(User::getAccount,account);
-    User user = userService.getOneUser(lambdaQueryWrapper);
-    System.out.println(user);
-    if(user == null ){
-      return Result.error("登陆失败，该用户不存在!");
-    }
-    else if(!user.getPassword().equals(password)){
-      return Result.error("登录失败，密码错误!");
-    }
-    else {
-      //3.在rides中删除验证，在session中添加标记
-      session.setAttribute("userInfo", user);
-      return Result.OK("登录成功！");
-    }
+  @PostMapping("/fail")
+  public Result<?> loginFail(){
+    return Result.error("登录失败！");
   }
 
   @GetMapping("/logout")

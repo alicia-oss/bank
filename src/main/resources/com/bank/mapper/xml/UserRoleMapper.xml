@@ -2,4 +2,11 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.bank.mapper.UserRoleMapper">
 
+    <select id="loadUserByUsername" resultType="java.lang.String">
+        SELECT c.`name`
+        FROM user_role a
+                 JOIN role c
+                      ON c.id = a.role_id
+        where a.id = #{id}
+    </select>
 </mapper>

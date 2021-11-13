@@ -5,6 +5,8 @@ import com.baomidou.mybatisplus.annotation.*;
 import java.sql.Date;
 import java.sql.Timestamp;
 import java.io.Serializable;
+import java.util.Collection;
+import java.util.List;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 import io.swagger.annotations.ApiModel;
@@ -44,9 +46,6 @@ public class User implements Serializable {
     @TableField(condition = SqlCondition.LIKE)
     private String name;
 
-    @ApiModelProperty(value = "职能（系统中的） 来自数据字典role")
-    private Integer role;
-
     @ApiModelProperty(value = "工号")
     private String employeeId;
 
@@ -65,15 +64,13 @@ public class User implements Serializable {
     @ApiModelProperty(value = "更新时间")
     private Date updateTime;
 
-    @ApiModelProperty(value = "密码盐")
-    private String salt;
 
     @ApiModelProperty(value = "逻辑删除")
     @TableLogic
     private Integer deleted;
 
     @TableField(exist = false)
-    private String permission;
+    private List<String> roles;
 
 
 }

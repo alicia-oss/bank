@@ -1,10 +1,16 @@
 package com.bank.service.impl;
 
+import com.bank.mapper.UserMapper;
 import com.bank.pojo.UserRole;
 import com.bank.mapper.UserRoleMapper;
 import com.bank.service.UserRoleService;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
+import org.apache.commons.lang3.builder.ToStringExclude;
+import org.junit.Test;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import java.util.List;
 
 /**
  * <p>
@@ -17,4 +23,10 @@ import org.springframework.stereotype.Service;
 @Service
 public class UserRoleServiceImpl extends ServiceImpl<UserRoleMapper, UserRole> implements UserRoleService {
 
+  @Autowired
+  UserRoleMapper userRoleMapper;
+  @Override
+  public List<String> getRoleListById(String id) {
+    return userRoleMapper.getListByAccount(id);
+  }
 }
